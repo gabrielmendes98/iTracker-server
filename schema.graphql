@@ -7,6 +7,14 @@ enum StatusType {
   Closed
 }
 
+type IssueCounts {
+  owner: String!
+  New: Int
+  Assigned: Int
+  Fixed: Int
+  Closed: Int
+}
+
 type Issue {
   _id: ID!
   id: Int!
@@ -44,6 +52,7 @@ type Query {
   about: String!
   issueList(status: StatusType, effortMin: Int, effortMax: Int): [Issue!]!
   issue(id: Int!): Issue!
+  issueCounts(status: StatusType, effortMin: Int, effortMax: Int): [IssueCounts!]!
 }
 
 type Mutation {
