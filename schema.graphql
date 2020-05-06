@@ -27,6 +27,11 @@ type Issue {
   description: String
 }
 
+type IssueListWithPages {
+  issues: [Issue!]!
+  pages: Int
+}
+
 input IssueInputs {
   title: String!
   "Optional, if not supplied, will be set to 'New'"
@@ -50,7 +55,7 @@ input IssueUpdateInputs {
 
 type Query {
   about: String!
-  issueList(status: StatusType, effortMin: Int, effortMax: Int): [Issue!]!
+  issueList(status: StatusType, effortMin: Int, effortMax: Int, page: Int = 1): IssueListWithPages
   issue(id: Int!): Issue!
   issueCounts(status: StatusType, effortMin: Int, effortMax: Int): [IssueCounts!]!
 }
