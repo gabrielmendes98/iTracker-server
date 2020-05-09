@@ -13,14 +13,19 @@ async function list(_, { status, effortMin, effortMax, page, search }) {
     if (effortMax) filter.effort.$lte = effortMax;
   }
 
-  if (search) filter.$text = { $search: search };
+  let cursor;
 
-  const cursor = db
-    .collection('issues')
-    .find(filter)
-    .sort({ id: 1 })
-    .skip(PAGE_SIZE * (page - 1))
-    .limit(PAGE_SIZE);
+  if (search) {
+    filter.$text = { $search: search };
+    cursor = db.collection('issues').find(filter).sort({ id: 1 });
+  } else {
+    cursor = db
+      .collection('issues')
+      .find(filter)
+      .sort({ id: 1 })
+      .skip(PAGE_SIZE * (page - 1))
+      .limit(PAGE_SIZE);
+  }
 
   const totalCount = await cursor.count(false);
   const issues = cursor.toArray();
