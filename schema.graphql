@@ -55,7 +55,7 @@ input IssueUpdateInputs {
 
 type Query {
   about: String!
-  issueList(status: StatusType, effortMin: Int, effortMax: Int, page: Int = 1): IssueListWithPages
+  issueList(status: StatusType, effortMin: Int, effortMax: Int, page: Int = 1, search: String): IssueListWithPages
   issue(id: Int!): Issue!
   issueCounts(status: StatusType, effortMin: Int, effortMax: Int): [IssueCounts!]!
 }

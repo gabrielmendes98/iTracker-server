@@ -3,7 +3,7 @@ const { getDb, getNextSequence } = require('../db');
 
 const PAGE_SIZE = 10;
 
-async function list(_, { status, effortMin, effortMax, page }) {
+async function list(_, { status, effortMin, effortMax, page, search }) {
   const db = getDb();
   const filter = {};
   if (status) filter.status = status;
@@ -12,6 +12,9 @@ async function list(_, { status, effortMin, effortMax, page }) {
     if (effortMin) filter.effort.$gte = effortMin;
     if (effortMax) filter.effort.$lte = effortMax;
   }
+
+  if (search) filter.$text = { $search: search };
+
   const cursor = db
     .collection('issues')
     .find(filter)
