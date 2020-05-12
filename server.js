@@ -3,8 +3,10 @@ const express = require('express');
 const { connectToDb } = require('./db');
 const { installHandler } = require('./api-handler');
 const auth = require('./auth');
+const cookieParser = require('cookie-parser');
 
 const app = express();
+app.use(cookieParser());
 app.use('/auth', auth.routes);
 const port = process.env.API_SERVER_PORT || 3000;
 
