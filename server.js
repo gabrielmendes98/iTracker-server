@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
 const { connectToDb } = require('./db');
-const { installHandler } = require('./api-handler.js');
+const { installHandler } = require('./api-handler');
+const auth = require('./auth');
 
+const app = express();
+app.use('/auth', auth.routes);
 const port = process.env.API_SERVER_PORT || 3000;
 
 installHandler(app);
