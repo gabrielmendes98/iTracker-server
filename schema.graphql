@@ -51,6 +51,14 @@ input IssueUpdateInputs {
   description: String
 }
 
+type User {
+  signedIn: Boolean!
+  givenName: String
+  name: String
+  email: String
+  picture: String
+}
+
 ##### Top level declarations
 
 type Query {
@@ -58,6 +66,7 @@ type Query {
   issueList(status: StatusType, effortMin: Int, effortMax: Int, page: Int = 1, search: String): IssueListWithPages
   issue(id: Int!): Issue!
   issueCounts(status: StatusType, effortMin: Int, effortMax: Int): [IssueCounts!]!
+  user: User!
 }
 
 type Mutation {
