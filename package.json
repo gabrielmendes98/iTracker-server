@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "This is the code for the issue tracker api server",
   "main": "index.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "start": "nodemon -e js,graphql -w . -w .env server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
