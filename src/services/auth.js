@@ -91,4 +91,9 @@ function resolveUser(_, args, { user }) {
   return user;
 }
 
-module.exports = { routes, getUser, mustBeSignedIn, resolveUser };
+module.exports = {
+  routes,
+  getUser,
+  mustBeSignedIn,
+  resolveUser,
+};

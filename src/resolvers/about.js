@@ -1,4 +1,4 @@
-const { mustBeSignedIn } = require('../auth.js');
+const { mustBeSignedIn } = require('../services/auth.js');
 
 let aboutMessage = 'iTracker API v1.0';
 

@@ -8,7 +8,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "nodemon -e js,graphql -w . -w .env server.js",
+    "start": "nodemon -e js,graphql -w . -w .env src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "publishheroku": "cd ../ && git subtree push --prefix api heroku-api master || true"
   },

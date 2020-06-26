@@ -1,6 +1,6 @@
 const { UserInputError } = require('apollo-server-express');
-const { getDb, getNextSequence } = require('../db');
-const { mustBeSignedIn } = require('../auth.js');
+const { getDb, getNextSequence } = require('../database');
+const { mustBeSignedIn } = require('../services/auth.js');
 
 const PAGE_SIZE = 10;
 
